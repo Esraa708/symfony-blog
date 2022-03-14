@@ -45,10 +45,10 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Category[] Returns an array of Category objects
-    //  */
-    /*
+    /**
+     * @return Category[] Returns an array of Category objects
+     */
+
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('c')
@@ -57,11 +57,16 @@ class CategoryRepository extends ServiceEntityRepository
             ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
 
+
+
+    public function updateCategory(Category $entity)
+    {
+     return $this->_em->flush();
+    }
+   
     /*
     public function findOneBySomeField($value): ?Category
     {
@@ -73,4 +78,8 @@ class CategoryRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getAllCategories()
+    {
+        return   $this->_em->getRepository(Category::class)->findAll();
+    }
 }

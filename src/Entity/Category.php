@@ -17,8 +17,8 @@ class Category
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    public $name;
+    #[ORM\Column(type: 'string', length: 50)]
+    public string  $name;
 
     #[ORM\Column(type: 'string', length: 50)]
     private $type;
@@ -32,7 +32,7 @@ class Category
         if (!in_array($type, array(self::CATEGORY_FEATURED, self::CATEGORY_GENERAL, self::CATEGORY_TRENDING))) {
             throw new \InvalidArgumentException("Invalid type");
         }
-        $this->type = $this->type;
+        $this->type = $type;
     }
     public function getType(): string
     {
